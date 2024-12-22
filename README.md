@@ -31,7 +31,15 @@ nvim --version
 Once Neovim is installed, you can proceed by cloning the repository containing the Neovim setup. Execute the following command:
 
 ```bash
-git clone https://github.com/HHDVasishtPranav/Lazy-neovim-dots ~/.config/nvim
+# Clone the repository to a temporary location
+git clone https://github.com/HHDVasishtPranav/Lazy-neovim-dots ~/temp-nvim-setup
+
+# Move the contents of the repository into the correct directory
+mv ~/temp-nvim-setup/* ~/.config/nvim/
+
+# Clean up the temporary directory
+rm -rf ~/temp-nvim-setup
+
 ```
 
 This will clone the repository to the default Neovim configuration directory (`~/.config/nvim`).
