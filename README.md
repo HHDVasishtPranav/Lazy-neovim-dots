@@ -13,9 +13,6 @@ Ensure you are using Ubuntu (or any Debian-based distribution). You need to inst
 2. Use the following commands to download and install the latest version of Neovim from the official website:
 
 ```bash
-# Install required dependencies
-sudo apt update
-
 # Add the Neovim stable release PPA
 wget -qO- https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz | tar xz -C /opt
 
