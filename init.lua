@@ -7,6 +7,7 @@ vim.cmd("set expandtab")           -- Convert tabs to spaces
 vim.cmd("set tabstop=2")           -- Number of spaces for a tab
 vim.cmd("set softtabstop=2")       -- Number of spaces for Tab key
 vim.cmd("set shiftwidth=2")        -- Number of spaces for indentation
+vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true 
 vim.g.mapleader = " "              -- Set the leader key to space
 
@@ -66,6 +67,13 @@ vim.keymap.set("n", "<C-e>", ":Neotree filesystem reveal left<CR>", {}) -- Ctrl+
 vim.keymap.set("n", "<C-e>", ":Neotree toggle<CR>", {})
 
 -- ========================
+-- Copy and Paste Key Mappings
+-- ========================
+vim.keymap.set('v', '<C-c>', '"+y', { noremap = true, silent = true }) -- Ctrl+C to copy
+vim.keymap.set('n', '<C-p>', '"+p', { noremap = true, silent = true }) -- Ctrl+P to paste
+vim.keymap.set('v', '<C-p>', '"+p', { noremap = true, silent = true }) -- Ctrl+P to paste in visual mode
+
+-- ========================
 -- Treesitter Configuration
 -- ========================
 local config = require("nvim-treesitter.configs")
@@ -75,7 +83,8 @@ config.setup({
     "bash", "json", "markdown", "yaml", "typescript",
   },                                                         -- Languages to ensure installed
   highlight = { enable = true },                             -- Enable syntax highlighting
-  indent = { enable = true },                                -- Enable indentation
+  indent = { enable = true },                                 -- Enable indentation
+  auto_install = true
 })
 
 -- ========================
