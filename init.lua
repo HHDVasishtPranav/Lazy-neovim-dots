@@ -53,6 +53,8 @@ local plugins = {
   { "kylechui/nvim-surround" },                                -- Manage parentheses, quotes, etc.
   { "akinsho/toggleterm.nvim", version = "*", config = true }, -- Integrated terminal
   { "folke/which-key.nvim" },                                  -- Display keybindings dynamically
+  { "github/copilot.vim" },                                     -- Add Copilot plugin
+
 }
 
 require("lazy").setup(plugins, opts)                           -- Initialize Lazy.nvim with plugins
@@ -70,8 +72,8 @@ vim.keymap.set("n", "<C-e>", ":Neotree toggle<CR>", {})
 -- Copy and Paste Key Mappings
 -- ========================
 vim.keymap.set('v', '<C-c>', '"+y', { noremap = true, silent = true }) -- Ctrl+C to copy
-vim.keymap.set('n', '<C-p>', '"+p', { noremap = true, silent = true }) -- Ctrl+P to paste
-vim.keymap.set('v', '<C-p>', '"+p', { noremap = true, silent = true }) -- Ctrl+P to paste in visual mode
+vim.keymap.set('n', '<C-v>', '"+p', { noremap = true, silent = true }) -- Ctrl+P to paste
+vim.keymap.set('v', '<C-v>', '"+p', { noremap = true, silent = true }) -- Ctrl+P to paste in visual mode
 
 -- ========================
 -- Treesitter Configuration
@@ -152,4 +154,11 @@ require("which-key").setup({})
 -- Set the Colorscheme
 -- ========================
 vim.cmd("colorscheme catppuccin")                            -- Apply Catppuccin theme
+
+-- ========================
+-- Copilot Configuration
+-- ========================
+vim.g.copilot_no_tab_map = true -- Disable default <Tab> mapping
+vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { noremap = true, silent = true, expr = true }) -- Use <C-J> for Copilot suggestions
+vim.cmd([[imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")]])
 
